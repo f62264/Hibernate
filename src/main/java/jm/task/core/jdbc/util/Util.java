@@ -13,10 +13,10 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
-   private static String URL = "jdbc:mysql://localhost:3306/testdb";
-    private static String USER = "root";
-    private static String PASSWORD = "root";
-    private static String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://localhost:3306/dbtest";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
+    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     public static Connection getConnection() {
         Connection connection = null;
@@ -29,16 +29,16 @@ public class Util {
         return connection;
     }
 
-    private static SessionFactory sessionFactory;
     public static SessionFactory getSessionFactory() {
+        SessionFactory sessionFactory = null;
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
-                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/testdb");
-                settings.put(Environment.USER, "root");
-                settings.put(Environment.PASS, "root");
+                settings.put(Environment.DRIVER, DB_DRIVER);
+                settings.put(Environment.URL, URL);
+                settings.put(Environment.USER, USER);
+                settings.put(Environment.PASS, PASSWORD);
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");

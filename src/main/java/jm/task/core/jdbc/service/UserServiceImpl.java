@@ -7,7 +7,7 @@ import jm.task.core.jdbc.model.User;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    UserDao userDaoHibernate = new UserDaoHibernateImpl();
+    private UserDao userDaoHibernate = new UserDaoHibernateImpl();
 
     public void createUsersTable() {
         userDaoHibernate.createUsersTable();
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> getAllUsers() {
-       return userDaoHibernate.getAllUsers();
+        return userDaoHibernate.getAllUsers();
     }
 
     public void cleanUsersTable() {
